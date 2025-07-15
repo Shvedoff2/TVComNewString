@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="TVCOMNewString.DateControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TVCOMNewString"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Height="60" Width="350">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Width="140" Margin="0,0,60,0">
+                <Label Content="Дата открытия"/>
+                <DatePicker x:Name="dateOpen"/>
+            </StackPanel>
+            <StackPanel Width="140">
+                <Label Content="Дата закрытия"/>
+                <DatePicker x:Name="dateClose"/>
+            </StackPanel>
+        </StackPanel>
+        <Border Background="LightGray" Height="3" VerticalAlignment="Bottom"/>
+    </Grid>
+</UserControl>

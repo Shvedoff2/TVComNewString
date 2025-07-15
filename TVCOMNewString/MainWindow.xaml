@@ -1,0 +1,101 @@
+﻿<Window x:Class="TVCOMNewString.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TVCOMNewString"
+        mc:Ignorable="d"
+        Title="TVComNewString" Height="680" Width="1000" MinHeight="680" MinWidth="1000">
+    <Grid>
+        <Grid x:Name="AddAd" Height="250" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="80">
+                <StackPanel Width="150" Margin="0,0,20,0" VerticalAlignment="Top">
+                    <Label Content="Заказчик"/>
+                    <ComboBox x:Name="orderCB" IsEditable="True"/>
+                </StackPanel>
+                <StackPanel Width="120" Margin="0,0,20,0" VerticalAlignment="Top">
+                    <Label Content="Телефон"/>
+                    <TextBox x:Name="phoneTB"/>
+                </StackPanel>
+                <StackPanel Width="100" VerticalAlignment="Top">
+                    <Label Content="Цвет"/>
+                    <TextBox x:Name="colorTB" Margin="0,0,0,10"/>
+                    <Button x:Name="colorBtn" Content="Изменить цвет" Height="25" Click="colorBtn_Click"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,100,0,0">
+                <StackPanel Orientation="Horizontal" Height="20" Width="177" HorizontalAlignment="Left">
+                    <Label Content="Количество дат: " FontSize="10" Height="30"/>
+                    <Button x:Name="LeftNumber" Height="20" Width="20" Content="&lt;" Click="LeftNumber_Click"/>
+                    <TextBox x:Name="NumberOfControls" Width="50" IsEnabled="False" Text="1" TextChanged="TextBox_TextChanged"/>
+                    <Button x:Name="RightNumber" Height="20" Width="20" Content="&gt;" Click="RightNumber_Click"/>
+                </StackPanel>
+                <Border Height="130" Width="410">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding Controls}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <local:DateControl/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Border>
+            </StackPanel>
+            <StackPanel Width="450" HorizontalAlignment="Right" Margin="0,10,10,0">
+                <Label Content="Текст объявления"/>
+                <TextBox x:Name="adTB" Height="175" TextWrapping="Wrap"/>
+                <Button Content="Добавить объявление" Margin="0,10,0,0" Click="AddButton_Click"/>
+            </StackPanel>
+        </Grid>
+        <Button x:Name="hideBtn" Content="Скрыть" Click="hideBtn_Click" Height="20" Margin="10,255,10,0" VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal" Height="110" Margin="10,285,0,0" x:Name="SearchPanel" VerticalAlignment="Top">
+            <GroupBox Margin="0,0,20,0">
+                <StackPanel>
+                    <TextBlock Text="Поиск по фильтру:"/>
+                    <RadioButton x:Name="filterRB1" Content="По тексту в объявлении" Margin="0,10,0,10"/>
+                    <RadioButton x:Name="filterRB2" Content="По заказчику" Margin="0,0,0,10"/>
+                    <TextBox x:Name="filterTB"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox>
+                <StackPanel>
+                    <TextBlock Text="Поиск по фильтру:"/>
+                    <Grid Margin="0,0,0,10">
+                        <RadioButton x:Name="dateRB1" Content="Между датами подачи" Margin="0,5,0,10" Checked="dateRB1_Checked"/>
+                        <RadioButton x:Name="dateRB2" Content="Актуальные" Margin="0,27,0,10" Checked="dateRB2_Checked"/>
+                        <RadioButton x:Name="dateRB3" Content="По дате подачи" Margin="150,5,0,10" Checked="dateRB3_Checked"/>
+                        <RadioButton x:Name="dateRB4" Content="Между датами закрытия" Margin="150,27,0,10" Checked="dateRB4_Checked"/>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal">
+                        <DatePicker x:Name="dateFilter" Width="130" Margin="0,0,25,0"/>
+                        <DatePicker x:Name="dateFilter2" Width="0"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="20" Margin="10,400,0,0" VerticalAlignment="Top" x:Name="ButtonPanel">
+            <Button Content="Найти" Width="140" Margin="0,0,41,0" Click="searchButton_Click"/>
+            <Button Content="Экспорт в файл" Width="140" Margin="0,0,41,0" Click="ExportFileButton_Click"/>
+            <Button Content="Экспорт в Excel" Width="140" Margin="0,0,280,0" Click="exportExcelButton_Click"/>
+        </StackPanel>
+        <Button x:Name="deleteBtn" Content="Удалить выделенную строку" Height="20" Width="200" HorizontalAlignment="Right" Margin="0,0,10,222" VerticalAlignment="Bottom" Click="DeleteButton_Click"/>
+        <!-- В XAML -->
+        <DataGrid x:Name="dataGrid1" 
+          ItemsSource="{Binding Advertisements}"
+          AutoGenerateColumns="False"
+          CanUserAddRows="False"
+          CanUserDeleteRows="False"
+          Height="200" VerticalAlignment="Bottom" Margin="10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Текст объявления" Binding="{Binding ТекстОбъявления}" Width="450"/>
+                <DataGridTextColumn Header="Заказчик" Binding="{Binding Заказчик}" Width="150"/>
+                <DataGridTextColumn Header="Дата подачи" Binding="{Binding ДатаПодачи, StringFormat=dd.MM.yyyy}" Width="100"/>
+                <DataGridTextColumn Header="Дата закрытия" Binding="{Binding ДатаЗакрытия, StringFormat=dd.MM.yyyy}" Width="100"/>
+                <DataGridTextColumn Header="Цвет" Binding="{Binding Цвет}" Width="90"/>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding Телефон}" Width="90"/>
+                <DataGridTextColumn Header="Код объявления" Binding="{Binding КодОбъявления}" Width="0"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
