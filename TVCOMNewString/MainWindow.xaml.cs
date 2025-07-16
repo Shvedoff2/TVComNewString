@@ -70,13 +70,21 @@ namespace TVCOMNewString
         }
         public MainWindow()
         {
-            InitializeComponent();
-            DataContext = this;
-            _advertisements = new ObservableCollection<Advertisement>();
-            dataGrid1.ItemsSource = Advertisements;
-            _advertisements.CollectionChanged += Advertisements_CollectionChanged;
-            NumberOfControls.Text = Number.ToString();
-            LoadTable();
+            try
+            {
+                InitializeComponent();
+                DataContext = this;
+                _advertisements = new ObservableCollection<Advertisement>();
+                dataGrid1.ItemsSource = Advertisements;
+                _advertisements.CollectionChanged += Advertisements_CollectionChanged;
+                NumberOfControls.Text = Number.ToString();
+                LoadTable();
+                MessageBox.Show("Инициализация завершена успешно! Версия 3.0.7");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}\n\nStackTrace: {ex.StackTrace}");
+            }
         }
         private void Advertisements_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -665,7 +673,7 @@ namespace TVCOMNewString
             string folderPath = System.IO.Path.Combine(desktopPath, "Бегунки");
             Directory.CreateDirectory(folderPath);
 
-            string timestamp = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss");
+            string timestamp = DateTime.Now.ToString("dd_MM_yyyy_HH_mm_ss");
             string filePath = System.IO.Path.Combine(folderPath, $"{timestamp}.txt");
 
             Encoding ansiEncoding = Encoding.GetEncoding(1251);

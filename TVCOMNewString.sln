@@ -5,16 +5,30 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TVCOMNewString", "TVCOMNewString\TVCOMNewString.csproj", "{51413D76-F466-437D-B3E6-0C8908F27832}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TVComNSInstaller", "TVComNSInstaller\TVComNSInstaller.vdproj", "{84538CA1-6D18-4BE3-BA50-0552DAB79F08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{51413D76-F466-437D-B3E6-0C8908F27832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{51413D76-F466-437D-B3E6-0C8908F27832}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51413D76-F466-437D-B3E6-0C8908F27832}.Debug|x64.ActiveCfg = Debug|x64
+		{51413D76-F466-437D-B3E6-0C8908F27832}.Debug|x64.Build.0 = Debug|x64
 		{51413D76-F466-437D-B3E6-0C8908F27832}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51413D76-F466-437D-B3E6-0C8908F27832}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51413D76-F466-437D-B3E6-0C8908F27832}.Release|x64.ActiveCfg = Release|x64
+		{51413D76-F466-437D-B3E6-0C8908F27832}.Release|x64.Build.0 = Release|x64
+		{84538CA1-6D18-4BE3-BA50-0552DAB79F08}.Debug|Any CPU.ActiveCfg = Debug
+		{84538CA1-6D18-4BE3-BA50-0552DAB79F08}.Debug|x64.ActiveCfg = Debug
+		{84538CA1-6D18-4BE3-BA50-0552DAB79F08}.Debug|x64.Build.0 = Debug
+		{84538CA1-6D18-4BE3-BA50-0552DAB79F08}.Release|Any CPU.ActiveCfg = Release
+		{84538CA1-6D18-4BE3-BA50-0552DAB79F08}.Release|x64.ActiveCfg = Release
+		{84538CA1-6D18-4BE3-BA50-0552DAB79F08}.Release|x64.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
