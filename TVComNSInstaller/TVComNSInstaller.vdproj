@@ -100,12 +100,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C7B0D130E23F16DB0317602E7760BD9B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_8095C44B29CE49AE9A3470B6627D5432"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -131,6 +125,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_3063AC00A9B7B59AF631F8119D2BFB0A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C7B0D130E23F16DB0317602E7760BD9B"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -541,15 +541,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TVComNSInstaller"
-        "ProductCode" = "8:{D98D8C98-3E83-48AB-AEB8-1E40B0F26891}"
-        "PackageCode" = "8:{EF3CADCF-9662-4041-96C1-447AA348C1B9}"
+        "ProductCode" = "8:{4E6F8FB5-B1A7-4615-ACAD-5404B27C960E}"
+        "PackageCode" = "8:{3B4D9CE1-FD87-4EA8-AC41-23F2FAE3C8BE}"
         "UpgradeCode" = "8:{78776581-394A-402E-BBA6-C0DDBE398424}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:3.0.7"
+        "ProductVersion" = "8:3.0.9"
         "Manufacturer" = "8:Shvedov Sergey"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -687,7 +687,7 @@
             "Target" = "8:_8095C44B29CE49AE9A3470B6627D5432"
             "Folder" = "8:_D03DBB03973542BAA1221CCA1BA7BF2A"
             "WorkingFolder" = "8:_DB7EF6C25309447F878A650A910D190A"
-            "Icon" = "8:"
+            "Icon" = "8:_D275AD53FF5743C5A37C56D33CC18E48"
             "Feature" = "8:"
             }
         }

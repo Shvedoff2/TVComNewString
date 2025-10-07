@@ -79,7 +79,8 @@ namespace TVCOMNewString
                 _advertisements.CollectionChanged += Advertisements_CollectionChanged;
                 NumberOfControls.Text = Number.ToString();
                 LoadTable();
-                MessageBox.Show("Инициализация завершена успешно! Версия 3.0.7");
+                filterRB1.IsChecked = true;
+                dateRB2.IsChecked = true;
             }
             catch (Exception ex)
             {
@@ -105,7 +106,38 @@ namespace TVCOMNewString
                 AutoSaveRowChanges(advertisement);
             }
         }
-
+        private void adTB_Pasting(object sender, DataObjectPastingEventArgs e)
+        {
+            if (e.DataObject.GetDataPresent(DataFormats.Text))
+            {
+                string text = e.DataObject.GetData(DataFormats.Text) as string;
+                if (text != null)
+                {
+                    try
+                    {
+                        // Пытаемся получить данные в Unicode формате
+                        if (e.DataObject.GetDataPresent(DataFormats.UnicodeText))
+                        {
+                            text = e.DataObject.GetData(DataFormats.UnicodeText) as string;
+                        }
+                        string cleanText = text.Replace("\r\n", " ").Replace("\n", " ").Replace("\r", " ");
+                        cleanText = System.Text.RegularExpressions.Regex.Replace(cleanText, @"[^\u0020-\u007E\u00A0-\u00FF\u0100-\u017F\u0400-\u04FF]", "");
+                        while (cleanText.Contains("  "))
+                        {
+                            cleanText = cleanText.Replace("  ", " ");
+                        }
+                        adTB.Text = cleanText.Trim();
+                        e.CancelCommand();
+                    }
+                    catch (Exception ex)
+                    {
+                        string cleanText = System.Text.RegularExpressions.Regex.Replace(text, @"[^\u0020-\u007E\u00A0-\u00FF\u0100-\u017F\u0400-\u04FF]", " ");
+                        adTB.Text = cleanText.Replace("\r\n", " ").Replace("\n", " ").Replace("\r", " ").Trim();
+                        e.CancelCommand();
+                    }
+                }
+            }
+        }
         private void AutoSaveRowChanges(Advertisement advertisement)
         {
             try
@@ -127,8 +159,8 @@ namespace TVCOMNewString
                     {
                         cmd.Parameters.AddWithValue("@text", advertisement.ТекстОбъявления ?? "");
                         cmd.Parameters.AddWithValue("@customer", advertisement.Заказчик ?? "");
-                        cmd.Parameters.AddWithValue("@dateOpen", advertisement.ДатаПодачи.Date);
-                        cmd.Parameters.AddWithValue("@dateClose", advertisement.ДатаЗакрытия.Date);
+                        cmd.Parameters.AddWithValue("@dateOpen", advertisement.ДатаПодачи.ToString("yyyy-MM-dd"));
+                        cmd.Parameters.AddWithValue("@dateClose", advertisement.ДатаЗакрытия.ToString("yyyy-MM-dd"));
                         cmd.Parameters.AddWithValue("@color", string.IsNullOrEmpty(advertisement.Цвет) ? "100,143,143,143" : advertisement.Цвет);
                         cmd.Parameters.AddWithValue("@phone", string.IsNullOrEmpty(advertisement.Телефон) ? (object)DBNull.Value : advertisement.Телефон);
                         cmd.Parameters.AddWithValue("@code", advertisement.КодОбъявления);
